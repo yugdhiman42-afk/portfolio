@@ -1,19 +1,82 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Markdown.astro';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const skills = [
+    { name: 'After Effects', icon: 'Ae' },
+    { name: 'Premiere Pro', icon: 'Pr' },
+    { name: 'Photoshop', icon: 'Ps' },
+    { name: 'Illustrator', icon: 'Ai' }
+];
 ---
 
-<Layout title="Welcome to Astro.">
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Yug Dhiman | Video Editor & Motion Designer">
+    <section class="hero-gradient min-h-[70vh] flex flex-col justify-center -mt-12">
+        <div class="mb-6">
+            <span class="text-primary text-sm sm:text-base font-medium tracking-[0.3em] uppercase">Video Editor & Motion Designer</span>
+        </div>
+
+        <h1 class="mb-6 leading-tight">
+            Crafting Visual<br />
+            <span class="text-primary">Stories</span> That Move
+        </h1>
+
+        <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed">
+            1 year of experience transforming raw footage into captivating visual narratives.
+            Specializing in motion graphics, color grading, and seamless edits that bring ideas to life.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-16">
+            <a href="/projects" class="btn btn-lg">View My Work</a>
+            <a href="/about" class="btn btn-lg btn-outline">About Me</a>
+        </div>
+
+        <div class="pt-8 border-t border-gray-800">
+            <p class="text-sm text-muted mb-4 uppercase tracking-wider">Tools I Master</p>
+            <div class="flex flex-wrap gap-3">
+                {skills.map((skill) => (
+                    <div class="skill-badge">
+                        <span class="text-primary font-bold">{skill.icon}</span>
+                        <span>{skill.name}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="section border-t border-gray-800">
+        <div class="divider"></div>
+        <h2 class="section-title">What I Do</h2>
+        <p class="section-subtitle">Bringing creativity and technical precision to every project</p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-6 bg-secondary rounded-sm border border-gray-800 hover:border-primary transition-colors duration-300">
+                <div class="text-3xl text-primary mb-4">01</div>
+                <h3 class="mb-3">Video Editing</h3>
+                <p class="text-gray-400">Professional cutting, pacing, and storytelling that keeps viewers engaged from start to finish.</p>
+            </div>
+
+            <div class="p-6 bg-secondary rounded-sm border border-gray-800 hover:border-primary transition-colors duration-300">
+                <div class="text-3xl text-primary mb-4">02</div>
+                <h3 class="mb-3">Motion Graphics</h3>
+                <p class="text-gray-400">Eye-catching animations and visual effects that add depth and polish to any video project.</p>
+            </div>
+
+            <div class="p-6 bg-secondary rounded-sm border border-gray-800 hover:border-primary transition-colors duration-300">
+                <div class="text-3xl text-primary mb-4">03</div>
+                <h3 class="mb-3">Color Grading</h3>
+                <p class="text-gray-400">Setting the mood and enhancing visual appeal through professional color correction and grading.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section border-t border-gray-800">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div>
+                <div class="divider"></div>
+                <h2 class="section-title mb-2">Ready to Collaborate?</h2>
+                <p class="text-gray-400">Let's create something amazing together.</p>
+            </div>
+            <a href="/about" class="btn btn-lg">Get In Touch</a>
+        </div>
+    </section>
 </Layout>

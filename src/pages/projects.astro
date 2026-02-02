@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+    {
+        title: 'Brand Commercial',
+        category: 'Video Editing',
+        description: 'A dynamic commercial edit featuring seamless transitions and impactful pacing.',
+        tools: ['Premiere Pro', 'After Effects'],
+        thumbnail: '/images/corgi.jpg'
+    },
+    {
+        title: 'Motion Graphics Reel',
+        category: 'Motion Graphics',
+        description: 'Animated logo reveals and kinetic typography for various brand identities.',
+        tools: ['After Effects', 'Illustrator'],
+        thumbnail: '/images/corgi.jpg'
+    },
+    {
+        title: 'Social Media Campaign',
+        category: 'Video Editing',
+        description: 'Engaging short-form content optimized for Instagram and TikTok.',
+        tools: ['Premiere Pro', 'Photoshop'],
+        thumbnail: '/images/corgi.jpg'
+    },
+    {
+        title: 'Corporate Presentation',
+        category: 'Motion Graphics',
+        description: 'Professional animated infographics and data visualization for corporate use.',
+        tools: ['After Effects', 'Illustrator'],
+        thumbnail: '/images/corgi.jpg'
+    },
+    {
+        title: 'Music Video Edit',
+        category: 'Video Editing',
+        description: 'Creative editing with beat-synced transitions and visual effects.',
+        tools: ['Premiere Pro', 'After Effects'],
+        thumbnail: '/images/corgi.jpg'
+    },
+    {
+        title: 'YouTube Content',
+        category: 'Video Editing',
+        description: 'Consistent editing style for long-form content with engaging storytelling.',
+        tools: ['Premiere Pro', 'Photoshop'],
+        thumbnail: '/images/corgi.jpg'
+    }
+];
+
+const categories = ['All', ...new Set(projects.map(p => p.category))];
+---
+
+<Layout title="Projects | Yug Dhiman">
+    <section class="py-8">
+        <div class="mb-12">
+            <div class="divider"></div>
+            <h1 class="mb-4">My Projects</h1>
+            <p class="text-lg text-gray-400 max-w-2xl">
+                A showcase of my best work in video editing, motion graphics, and visual design.
+                Each project represents a unique creative challenge and solution.
+            </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mb-12">
+            {categories.map((category, index) => (
+                <button
+                    class:list={[
+                        "filter-btn px-5 py-2 text-sm font-medium uppercase tracking-wider transition-all duration-300 rounded-sm",
+                        index === 0 ? "active" : ""
+                    ]}
+                    data-category={category}
+                >
+                    {category}
+                </button>
+            ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+            {projects.map((project) => (
+                <article class="project-card" data-category={project.category}>
+                    <div class="relative overflow-hidden">
+                        <img
+                            src={project.thumbnail}
+                            alt={project.title}
+                            class="project-card-image"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-primary text-sm font-medium uppercase tracking-wider">{project.category}</span>
+                        </div>
+                    </div>
+                    <div class="project-card-content">
+                        <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
+                        <p class="text-gray-400 text-sm mb-4">{project.description}</p>
+                        <div class="flex flex-wrap gap-2">
+                            {project.tools.map((tool) => (
+                                <span class="text-xs px-2 py-1 bg-gray-800 text-primary rounded-sm">{tool}</span>
+                            ))}
+                        </div>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </section>
+
+    <section class="section border-t border-gray-800 mt-12">
+        <div class="text-center">
+            <h2 class="text-2xl font-bold mb-4">Want to See More?</h2>
+            <p class="text-gray-400 mb-8">Get in touch to discuss your project or request my full portfolio.</p>
+            <a href="/about" class="btn btn-lg">Contact Me</a>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .filter-btn {
+        background: transparent;
+        border: 1px solid #374151;
+        color: #9ca3af;
+        cursor: pointer;
+    }
+
+    .filter-btn:hover {
+        border-color: #d4af37;
+        color: #d4af37;
+    }
+
+    .filter-btn.active {
+        background: #d4af37;
+        border-color: #d4af37;
+        color: #0a0a0a;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projects = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+
+                projects.forEach(project => {
+                    if (category === 'All' || project.dataset.category === category) {
+                        (project as HTMLElement).style.display = 'block';
+                    } else {
+                        (project as HTMLElement).style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
