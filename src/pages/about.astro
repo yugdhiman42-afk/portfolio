@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skills = [
+    {
+        name: 'Adobe After Effects',
+        icon: 'Ae',
+        level: 90,
+        description: 'Motion graphics, visual effects, compositing'
+    },
+    {
+        name: 'Adobe Premiere Pro',
+        icon: 'Pr',
+        level: 95,
+        description: 'Video editing, color correction, audio mixing'
+    },
+    {
+        name: 'Adobe Photoshop',
+        icon: 'Ps',
+        level: 85,
+        description: 'Photo editing, thumbnails, graphics'
+    },
+    {
+        name: 'Adobe Illustrator',
+        icon: 'Ai',
+        level: 80,
+        description: 'Vector graphics, logo design, illustrations'
+    }
+];
+
+const experience = [
+    {
+        title: 'Freelance Video Editor',
+        period: '2024 - Present',
+        description: 'Working with various clients on commercial, social media, and corporate video projects.'
+    }
+];
+---
+
+<Layout title="About | Yug Dhiman">
+    <section class="py-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+                <div class="divider"></div>
+                <h1 class="mb-6">About Me</h1>
+                <p class="text-lg text-gray-400 mb-6 leading-relaxed">
+                    I'm Yug Dhiman, a passionate video editor and motion designer with 1 year of hands-on experience
+                    in creating compelling visual content. My journey in video editing started from a genuine love
+                    for storytelling and visual arts.
+                </p>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                    I specialize in crafting engaging videos that capture attention and deliver messages effectively.
+                    From fast-paced commercial edits to smooth motion graphics, I bring technical precision and
+                    creative vision to every project.
+                </p>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    My expertise spans across the Adobe Creative Suite, with a particular focus on After Effects
+                    for motion graphics and Premiere Pro for video editing. I'm constantly learning and exploring
+                    new techniques to push the boundaries of my work.
+                </p>
+
+                <div class="flex gap-4">
+                    <a href="mailto:contact@yugdhiman.com" class="btn">Get In Touch</a>
+                    <a href="/projects" class="btn btn-outline">View Projects</a>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div class="p-6 bg-secondary rounded-sm border border-gray-800">
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Quick Facts</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center border-b border-gray-800 pb-3">
+                            <span class="text-gray-400">Experience</span>
+                            <span class="text-white font-medium">1 Year</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-gray-800 pb-3">
+                            <span class="text-gray-400">Specialization</span>
+                            <span class="text-white font-medium">Motion Graphics</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-gray-800 pb-3">
+                            <span class="text-gray-400">Primary Tool</span>
+                            <span class="text-white font-medium">After Effects</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-400">Availability</span>
+                            <span class="text-primary font-medium">Open for Projects</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section border-t border-gray-800">
+        <div class="divider"></div>
+        <h2 class="section-title">Skills & Expertise</h2>
+        <p class="section-subtitle">Tools and technologies I work with daily</p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            {skills.map((skill) => (
+                <div class="p-6 bg-secondary rounded-sm border border-gray-800 hover:border-primary transition-colors duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-gray-800 flex items-center justify-center rounded-sm">
+                            <span class="text-primary font-bold text-lg">{skill.icon}</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">{skill.name}</h3>
+                            <p class="text-gray-400 text-sm">{skill.description}</p>
+                        </div>
+                    </div>
+                    <div class="relative h-2 bg-gray-800 rounded-full overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                            style={`width: ${skill.level}%`}
+                        ></div>
+                    </div>
+                    <div class="text-right mt-2">
+                        <span class="text-sm text-gray-400">{skill.level}%</span>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <section class="section border-t border-gray-800">
+        <div class="divider"></div>
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">My professional journey</p>
+
+        <div class="space-y-6">
+            {experience.map((exp) => (
+                <div class="p-6 bg-secondary rounded-sm border-l-4 border-primary">
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                        <h3 class="text-xl font-semibold">{exp.title}</h3>
+                        <span class="text-primary text-sm font-medium">{exp.period}</span>
+                    </div>
+                    <p class="text-gray-400">{exp.description}</p>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <section class="section border-t border-gray-800">
+        <div class="p-8 bg-secondary rounded-sm border border-gray-800 text-center">
+            <h2 class="text-2xl font-bold mb-4">Let's Work Together</h2>
+            <p class="text-gray-400 mb-6 max-w-xl mx-auto">
+                Have a project in mind? I'd love to hear about it. Let's discuss how we can bring your vision to life.
+            </p>
+            <a href="mailto:contact@yugdhiman.com" class="btn btn-lg">Send Me an Email</a>
+        </div>
+    </section>
+</Layout>

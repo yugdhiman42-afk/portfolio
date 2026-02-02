@@ -2,9 +2,13 @@
 
 @theme {
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primary: #f67280;
-    --color-primary-content: #101828;
-    --color-complementary: #355c7d;
+    /* Classy dark portfolio color scheme */
+    --color-primary: #d4af37;
+    --color-primary-content: #0a0a0a;
+    --color-complementary: #0f0f0f;
+    --color-secondary: #1a1a1a;
+    --color-accent: #c9a227;
+    --color-muted: #6b6b6b;
     --background-image-noise: linear-gradient(
             to bottom,
             color-mix(in oklab, var(--color-gray-950) 0%, transparent),
@@ -15,15 +19,19 @@
 
 @layer base {
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply text-2xl font-bold sm:text-3xl lg:text-4xl;
+    }
+
+    h3 {
+        @apply text-xl font-semibold sm:text-2xl;
     }
 
     a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+        @apply transition hover:opacity-80;
     }
 
     pre {
@@ -56,13 +64,15 @@
     }
 
     .btn {
-        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-colors;
-        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
+        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-all duration-300;
+        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.5rem);
         font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
+        border-radius: var(--btn-border-radius, 0.125rem);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
 
         &:hover {
-            @apply bg-primary/85;
+            @apply bg-accent scale-105;
         }
 
         &:disabled {
@@ -71,8 +81,66 @@
     }
 
     .btn-lg {
-        --btn-font-size: 1.125rem;
-        --btn-px: 1.5rem;
+        --btn-font-size: 1rem;
+        --btn-px: 2rem;
         --btn-py: 1.125rem;
+    }
+
+    .btn-outline {
+        @apply bg-transparent border-2 border-primary text-primary;
+
+        &:hover {
+            @apply bg-primary text-primary-content;
+        }
+    }
+
+    /* Portfolio Card Styles */
+    .project-card {
+        @apply bg-secondary rounded-sm overflow-hidden transition-all duration-300;
+
+        &:hover {
+            @apply scale-[1.02];
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+        }
+    }
+
+    .project-card-image {
+        @apply w-full aspect-video object-cover;
+    }
+
+    .project-card-content {
+        @apply p-6;
+    }
+
+    /* Skill Badge */
+    .skill-badge {
+        @apply inline-flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-sm text-sm font-medium border border-gray-800 transition-all duration-300;
+
+        &:hover {
+            @apply border-primary text-primary;
+        }
+    }
+
+    /* Section Styles */
+    .section {
+        @apply py-16 sm:py-24;
+    }
+
+    .section-title {
+        @apply text-3xl sm:text-4xl font-bold mb-4 text-white;
+    }
+
+    .section-subtitle {
+        @apply text-lg text-muted mb-12;
+    }
+
+    /* Divider */
+    .divider {
+        @apply w-16 h-0.5 bg-primary mb-8;
+    }
+
+    /* Hero Styles */
+    .hero-gradient {
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
     }
 }
